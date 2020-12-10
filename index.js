@@ -2,14 +2,14 @@ var promo = ["Ahmed", "Mohammed", "Thi", "Kitty", "Sébastien", "Allan"];
 
 function addPeople() {
     var newPeople = document.getElementById('addPeople').value;
-    if (newPeople == promo.indexOf()) {
-        console.log('déjà inscrit')
+    if (promo.indexOf(newPeople) == -1) {
+        promo.push(newPeople)
+        console.log(promo)
+    } else if (promo.indexOf(newPeople) != -1) {
+        console.log("IL EST DANS LE TAB")
+    } else {
+        console.log()
     }
-    else {
-        promo.unshift(newPeople)
-        console.log('bien ajouté au tableau!')
-    }
-    console.log(promo)
 }
 
 
@@ -20,4 +20,15 @@ function tirage() {
         dice = Math.floor(Math.random() * promo.length)
     }
     document.getElementById('result').innerHTML = promo[dice];
+}
+
+
+var newPeople = "Sébastien";
+
+if (promo.indexOf(newPeople) == -1) {
+    console.log("PAS DANS LE TAB")
+} else if (promo.indexOf(newPeople) != -1) {
+    console.log("IL EST DANS LE TAB")
+} else {
+    console.log()
 }
