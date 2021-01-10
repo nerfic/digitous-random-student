@@ -1,39 +1,66 @@
 var promo = ["Ahmed", "Mohammed", "Houra", "Mohamad Bailo", "Saurav", "Kitty", "Elisabeth", "Nicolas", "Yeshi Tsering", "Mahmoudou", "Allan", "Ewa", "Mosindo", "Hassan", "Sébastien", "Damir", "Hadama", "Thi", "Mohamed", "Atif",];
+
+var printPromo = promo.join(" ")
+document.getElementById("tab").innerHTML = printPromo;
+
+var error = document.getElementById('alert-error').style.display = 'none';
+var success = document.getElementById('alert-success').style.display = 'none';
+
 function addPeople() {
     var newPeople = document.getElementById('addPeople').value;
-    if (promo.indexOf(newPeople) == -1) {
+    if (promo.indexOf(newPeople) === -1) {
         promo.push(newPeople)
-        console.log(promo)
+        console.log("Ajouté avec succès")
+        success = document.getElementById('alert-success').style.display = 'block';
+        document.getElementById("alert-success").innerHTML = "Il a été ajouté avec succès";
+        setTimeout(function () {
+            error = document.getElementById('alert-success').style.display = 'none';
+        }, 3000);
     } else if (promo.indexOf(newPeople) != -1) {
-        console.log("IL EST DANS LE TAB")
+        console.log("Error : il est déjà dans le tab")
+        error = document.getElementById('alert-error').style.display = 'block';
+        document.getElementById("alert-error").innerHTML = "Erreur: il fait déjà parti du tableau";
+        setTimeout(function () {
+            error = document.getElementById('alert-error').style.display = 'none';
+        }, 3000)
     } else {
-        console.log()
+        console.log("Error : idk")
     }
+    printPromoKonexio(printPromo);
 }
 
-// trouver une fonction qui trouve l'index de chaque item dans la liste
 
-function suppPeople() {
+function suppPeople() { // doit supp dans array
     var suppPeople = document.getElementById('addPeople').value;
-    var promo = ["Ahmed", "Mohammed", "Houra", "Mohamad Bailo", "Saurav",];
-    var suppPeople = "Ahmed";
-    if (promo.indexOf(suppPeople) != -1) {
-        console.log("JE VAIS LE SUPP")
-        promo.filter(suppPeople)
-        console.log(promo)
-    } else if (promo.indexOf(suppPeople) == -1) {
-        console.log("J'ai pas trouvé")
-        console.log(promo)
+
+    if (promo.indexOf(suppPeople) === -1) {
+        console.log("Il est inexistant")
+        error = document.getElementById('alert-error').style.display = 'block';
+        document.getElementById("alert-error").innerHTML = "Erreur: il est inexistant";
+        setTimeout(function () {
+            error = document.getElementById('alert-error').style.display = 'none';
+        }, 3000)
+    } else if (promo.indexOf(suppPeople) != -1) {
+        console.log("Je vais le supprimer")
+        error = document.getElementById('alert-success').style.display = 'block';
+        document.getElementById("alert-success").innerHTML = `${suppPeople} a bien été supprimé!`;
+        setTimeout(function () {
+            error = document.getElementById('alert-success').style.display = 'none';
+        }, 3000)
     } else {
     }
-    console.log(promo)
+    printPromoKonexio(printPromo);
 }
 
+function printPromoKonexio(printPromo) {
+    printPromo = promo.join(" ")
+    document.getElementById("tab").innerHTML = printPromo;
+}
 
 function tirage() {
     var dice = Math.floor(Math.random() * promo.length)
 
-    while (promo[dice] === "Sébastien" || promo[dice] === "Allan") {
+    while (promo[dice] === "Allan" || promo[dice] === "Sébastien") {
         dice = Math.floor(Math.random() * promo.length)
     }
     document.getElementById('result').innerHTML = promo[dice];

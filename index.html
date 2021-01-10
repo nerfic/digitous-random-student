@@ -6,10 +6,15 @@
 </head>
 
 <body>
-    <h1>Rajouter quelqu'un au tableau</h1>
+    <h3 id="tab">Voici le tableau</h3>
+    <h3>Rajouter quelqu'un au tableau</h3>
+    <p style="display: none; color:white; background-color: green;" id="alert-success"></p>
+    <p style="display: none; color:white; background-color: red;" id="alert-error"></p>
+
     <input type="text" id="addPeople" required>
     <button type="submit" onclick="addPeople()">Ajouter</button>
     <button type="submit" onclick="suppPeople()">Supprimer</button>
+
     <h1>Tirage au sort:</h1>
     <input type="button" value="Tirer au sort" onclick="tirage()">
     <h3>Le résultat est:</h3>
